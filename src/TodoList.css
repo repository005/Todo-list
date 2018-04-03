@@ -4,8 +4,9 @@
 	z-index: 1;
 	text-align: center;
 	max-width: 500px;
+	overflow: hidden;
 	margin: auto;
-	background: rgba(0, 0, 0, .8);
+	background: rgba(0, 0, 0, .6);
 	color: white;
 }
 
@@ -61,14 +62,14 @@
 	font-family: 'Jura', sans-serif;
 }
 
-.todo-form button {
+.submit {
 	display: block;
 	margin: auto;
 	width: 70%;
 	padding: 15px 0px;
 	border: none;
 	outline: none;
-	background: rgba(214, 65, 0, .8);
+	background: rgba(0, 179, 80, .8);
 	cursor: pointer;
 	color: rgba(255, 255, 255, .9);
 	font-size: 18px;
@@ -77,8 +78,29 @@
 	user-select: none;
 }
 
-.todo-form button:hover {
-	background: rgba(214, 65, 0, .9);
+.submit:hover {
+	background: rgba(0, 179, 80, .9);
+}
+
+.clear-button {
+	display: block;
+	margin: auto;
+	width: 70%;
+	padding: 15px 0px;
+	border: none;
+	outline: none;
+	background: rgba(194, 50, 10, .8);
+	cursor: pointer;
+	color: rgba(255, 255, 255, .9);
+	font-size: 18px;
+	font-family: 'Jura', sans-serif;
+	font-weight: 800;
+	user-select: none;
+	margin-bottom: 10px;
+}
+
+.clear-button:hover {
+	background: rgba(194, 50, 10, .9);
 }
 
 .item-list {
@@ -127,16 +149,17 @@
 	opacity: 1;
 }
 
-
 @media screen and (max-width: 500px) {
 	.todo-list {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
+		min-height: 100vh;
 		padding-bottom: 0;
-		z-index: 3;
-		background: rgba(0, 0, 0, .8);
 	}
+
+	.todo-form input,
+	.submit,
+	.clear-button,
+	.item-list {
+		width: 90%;
+	}
+
 }

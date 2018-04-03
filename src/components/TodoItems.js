@@ -23,8 +23,8 @@ class TodoItems extends React.Component {
 		var listItems = todoEntries.map(this.createTask);
 
 		return (
-			<ul className="item-list">
-			<FlipMove deration={250} easing={"ease-out"}>
+			<ul className='item-list'>
+			<FlipMove deration={250} easing={'ease-out'}>
 				{listItems}
 			</FlipMove>
 			</ul>

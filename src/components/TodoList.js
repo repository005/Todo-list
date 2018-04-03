@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItems from './TodoItems';
+import ClearButton from './ClearButton';
 import FlipMove from 'react-flip-move';
 
 class TodoList extends React.Component {
@@ -10,6 +11,7 @@ class TodoList extends React.Component {
 		};
 		this.addItem = this.addItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
+		this.clearAll = this.clearAll.bind(this);
 	}
 
 	addItem(e) {
@@ -28,6 +30,7 @@ class TodoList extends React.Component {
 			});
 		}
 		this._inputElement.value = '';
+		this._inputElement.focus();
 	}
 
 	deleteItem(key) {
@@ -40,20 +43,29 @@ class TodoList extends React.Component {
 		});
 	}
 
+	clearAll() {
+		this.setState({
+			items: []
+		});
+	}
+
 	render() {
+		var deployed = this.state.items.length > 0;
+
 		return (
 			<div className='todo-list'>
 				<h1 className='todo-headline'>Список дел</h1>
 				<div className='todo-header'>
-					<form className="todo-form" onSubmit={this.addItem}>
+					<form className='todo-form' onSubmit={this.addItem}>
 						<input 
 							ref={(a) => this._inputElement = a}
 							placeholder='Введите задачу'
 							autoFocus={true}
 						/>
-						<button type='submit'>Добавить</button>
+						<button className='submit' type='submit'>Добавить</button>
 					</form>
 				</div>
+				{deployed && <ClearButton onClick={this.clearAll}/>}
 				<TodoItems
 					entries={this.state.items} 
 					delete={this.deleteItem}
